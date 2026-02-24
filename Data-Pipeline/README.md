@@ -66,8 +66,8 @@ Task 8: pipeline_report  → Final summary saved to GCS
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/NagashreeBK98/courseweave-ai-fork.git
-cd courseweave-ai-fork/Data-Pipeline
+git clone https://github.com/sachinsree98/courseweave-ai.git
+cd courseweave-ai/Data-Pipeline
 ```
 
 ### 2. Create Virtual Environment
