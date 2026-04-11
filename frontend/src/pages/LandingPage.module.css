@@ -1,10 +1,5 @@
 .page { min-height: 100vh; background: var(--bg); }
-
-.nav {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 16px 48px; border-bottom: 1px solid var(--border);
-  background: var(--bg-card); position: sticky; top: 0; z-index: 100;
-}
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 48px; border-bottom: 1px solid var(--border); background: var(--bg-card); position: sticky; top: 0; z-index: 100; }
 .navLogo { display: flex; align-items: center; gap: 10px; font-size: 16px; color: var(--text-primary); }
 .logoMark { width: 32px; height: 32px; background: var(--accent); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; color: #fff; }
 .navLogo strong { font-weight: 600; }
@@ -14,7 +9,6 @@
 .loginLink:hover { background: var(--bg-secondary); }
 .signupBtn { font-size: 14px; font-weight: 500; color: #fff; background: var(--accent); padding: 7px 18px; border-radius: var(--radius-sm); transition: opacity var(--transition); }
 .signupBtn:hover { opacity: 0.9; }
-
 .hero { max-width: 720px; margin: 0 auto; padding: 80px 24px 60px; text-align: center; }
 .heroTag { display: inline-block; font-size: 12px; font-weight: 500; color: var(--accent-text); background: var(--accent-light); border: 1px solid var(--accent-border); padding: 4px 14px; border-radius: 999px; margin-bottom: 24px; }
 .heroTitle { font-size: clamp(32px, 5vw, 52px); font-weight: 300; line-height: 1.15; color: var(--text-primary); margin-bottom: 20px; }
@@ -25,17 +19,14 @@
 .primaryBtn:hover { opacity: 0.9; }
 .secondaryBtn { font-size: 15px; font-weight: 500; color: var(--text-primary); background: var(--bg-card); padding: 12px 28px; border-radius: var(--radius-md); border: 1px solid var(--border); transition: background var(--transition); }
 .secondaryBtn:hover { background: var(--bg-secondary); }
-
 .statsRow { display: flex; justify-content: center; gap: 40px; padding-top: 32px; border-top: 1px solid var(--border); flex-wrap: wrap; }
 .statItem { display: flex; flex-direction: column; gap: 2px; }
 .statNum { font-size: 22px; font-weight: 600; color: var(--text-primary); }
 .statLab { font-size: 12px; color: var(--text-tertiary); }
-
 .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; max-width: 1100px; margin: 0 auto; padding: 0 24px 80px; }
 .featureCard { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; transition: box-shadow var(--transition); }
 .featureCard:hover { box-shadow: var(--shadow-md); }
 .featureIcon { font-size: 24px; margin-bottom: 12px; }
 .featureCard h3 { font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px; }
 .featureCard p { font-size: 13.5px; color: var(--text-secondary); line-height: 1.65; }
-
 .footer { text-align: center; padding: 24px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-tertiary); }

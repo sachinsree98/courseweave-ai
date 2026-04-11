@@ -27,9 +27,9 @@ export default function DashboardPage() {
   if (loading) return <PageSpinner />
   if (error) return <Alert type="danger">{error}</Alert>
 
-  const { student, stats, completed_courses, remaining_courses } = data
+  const { student, degree_audit: stats, completed_courses, remaining_courses } = data
 
-  const pct = stats.progress_pct
+  const pct = stats.progress_pct || 0
   const nextCourses = remaining_courses.filter(c => c.course_type === 'Core').slice(0, 3)
   const electivesNext = remaining_courses.filter(c => c.course_type === 'Elective').slice(0, 2)
 
@@ -49,10 +49,10 @@ export default function DashboardPage() {
 
       {/* Stats grid */}
       <div className={styles.statsGrid}>
-        <StatCard label="Credits completed" value={`${stats.credits_completed} / ${stats.total_required}`} sub={`${pct}% of program done`} accent="teal" />
-        <StatCard label="Courses completed" value={stats.courses_completed} sub={`${stats.core_completed} core · ${stats.electives_completed} electives`} accent="blue" />
-        <StatCard label="GPA" value={stats.gpa.toFixed(2)} sub="Cumulative" accent={stats.gpa >= 3.5 ? 'teal' : stats.gpa >= 3.0 ? 'blue' : 'amber'} />
-        <StatCard label="Credits remaining" value={stats.credits_remaining} sub="To graduation" accent={stats.credits_remaining <= 12 ? 'teal' : 'amber'} />
+        <StatCard label="Credits completed" value={`${stats.credits_completed || 0} / ${stats.total_required || 40}`} sub={`${pct}% of program done`} accent="teal" />
+        <StatCard label="Courses completed" value={stats.courses_completed || 0} sub={`${stats.core_completed || 0} core · ${stats.electives_completed || 0} electives`} accent="blue" />
+        <StatCard label="GPA" value={(stats.gpa || 0).toFixed(2)} sub="Cumulative" accent={stats.gpa >= 3.5 ? 'teal' : stats.gpa >= 3.0 ? 'blue' : 'amber'} />
+        <StatCard label="Credits remaining" value={stats.credits_remaining || 0} sub="To graduation" accent={stats.credits_remaining || 0 <= 12 ? 'teal' : 'amber'} />
       </div>
 
       {/* Progress bar */}
@@ -65,8 +65,8 @@ export default function DashboardPage() {
           <div className={styles.progressFill} style={{ width: `${pct}%` }} />
         </div>
         <div className={styles.progressMeta}>
-          <span>{stats.credits_completed} credits earned</span>
-          <span>{stats.credits_remaining} credits remaining</span>
+          <span>{stats.credits_completed || 0} credits earned</span>
+          <span>{stats.credits_remaining || 0} credits remaining</span>
         </div>
       </Card>
 
