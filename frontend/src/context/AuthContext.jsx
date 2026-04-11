@@ -13,8 +13,15 @@ export function AuthProvider({ children }) {
     const token = localStorage.getItem('cw_token')
     if (token) {
       authApi.me()
-        .then(r => { setStudent(r.data); localStorage.setItem('cw_student', JSON.stringify(r.data)) })
-        .catch(() => { localStorage.removeItem('cw_token'); localStorage.removeItem('cw_student'); setStudent(null) })
+        .then(r => {
+          setStudent(r.data)
+          localStorage.setItem('cw_student', JSON.stringify(r.data))
+        })
+        .catch(() => {
+          localStorage.removeItem('cw_token')
+          localStorage.removeItem('cw_student')
+          setStudent(null)
+        })
         .finally(() => setLoading(false))
     } else {
       setLoading(false)
@@ -24,16 +31,16 @@ export function AuthProvider({ children }) {
   const login = async (email, password) => {
     const r = await authApi.login({ email, password })
     localStorage.setItem('cw_token', r.data.token)
-    localStorage.setItem('cw_student', JSON.stringify(r.data.student))
-    setStudent(r.data.student)
+    localStorage.setItem('cw_student', JSON.stringify(r.data))
+    setStudent(r.data)
     return r.data
   }
 
   const signup = async (data) => {
     const r = await authApi.signup(data)
     localStorage.setItem('cw_token', r.data.token)
-    localStorage.setItem('cw_student', JSON.stringify(r.data.student))
-    setStudent(r.data.student)
+    localStorage.setItem('cw_student', JSON.stringify(r.data))
+    setStudent(r.data)
     return r.data
   }
 
