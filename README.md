@@ -660,3 +660,4 @@ Slack alerts are sent on each task completion or failure via `SLACK_WEBHOOK_URL`
 **Gemini rate limits:** Vertex AI default quota is 10 requests per minute for Gemini 2.5 Flash. The eval runner sleeps 15 seconds between test cases to stay within this limit. Request a quota increase to 60 RPM at `https://console.cloud.google.com/iam-admin/quotas?project=courseweave-ai` to reduce eval run time from 4 minutes to under 2 minutes.
 
 **Cross-encoder scores:** The `ms-marco-MiniLM-L-6-v2` cross-encoder produces logit scores, not probabilities. Scores are negative for most course-query pairs on this corpus. The threshold is set to -10.0 to retain all candidates and let MMR and guardrails do the final filtering. Relative ranking is correct even with negative absolute scores.
+# CourseWeave AI - Frontend + API layer added Sat Apr 11 00:45:54 EDT 2026
