@@ -1,26 +1,26 @@
 import { Outlet, NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
+import FloatingChat from '../chat/FloatingChat'
 import {
   LayoutDashboard, BookOpen, Map, GitBranch,
-  CheckCircle, TrendingUp, LogOut, Bot, ChevronRight
+  TrendingUp, LogOut, ChevronRight
 } from 'lucide-react'
 import styles from './AppShell.module.css'
 
 const nav = [
-  { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-  { to: '/advisor', icon: Bot, label: 'AI Advisor' },
-  { to: '/catalog', icon: BookOpen, label: 'Course Catalog' },
-  { to: '/roadmap', icon: Map, label: 'My Roadmap' },
-  { to: '/prerequisites', icon: GitBranch, label: 'Prerequisites' },
-  { to: '/progress', icon: TrendingUp, label: 'Progress' },
+  { to: '/dashboard',     icon: LayoutDashboard, label: 'Dashboard' },
+  { to: '/catalog',       icon: BookOpen,         label: 'Course Catalog' },
+  { to: '/roadmap',       icon: Map,              label: 'My Roadmap' },
+  { to: '/prerequisites', icon: GitBranch,        label: 'Prerequisites' },
+  { to: '/progress',      icon: TrendingUp,       label: 'Progress' },
 ]
 
 const programLabels = {
   MS_DAE: 'Data Analytics Eng.',
-  MS_DS: 'Data Science',
-  MS_CS: 'Computer Science',
-  MS_DA: 'Data Analytics',
-  MS_IS: 'Information Systems',
+  MS_DS:  'Data Science',
+  MS_CS:  'Computer Science',
+  MS_DA:  'Data Analytics',
+  MS_IS:  'Information Systems',
 }
 
 export default function AppShell() {
@@ -42,7 +42,7 @@ export default function AppShell() {
         </div>
 
         <nav className={styles.nav}>
-          <span className={styles.navSection}>Menu</span>
+          <span className={styles.navSection}>Navigation</span>
           {nav.map(({ to, icon: Icon, label }) => (
             <NavLink
               key={to}
@@ -70,14 +70,17 @@ export default function AppShell() {
 
       <div className={styles.main}>
         <header className={styles.topnav}>
-          <div className={styles.breadcrumb}>
-            <span className={styles.goalChip}>
-              <span className={styles.goalDot} />
-              Goal: {student?.target_career}
-            </span>
+          <div className={styles.goalChip}>
+            <span className={styles.goalDot} />
+            Goal: {student?.target_career}
           </div>
           <div className={styles.topRight}>
             <span className={styles.programTag}>{student?.program_code}</span>
+            {student?.degree_audit && (
+              <span className={styles.progressChip}>
+                {student.degree_audit.progress_pct ?? 0}% complete
+              </span>
+            )}
           </div>
         </header>
 
@@ -85,6 +88,8 @@ export default function AppShell() {
           <Outlet />
         </main>
       </div>
+
+      <FloatingChat />
     </div>
   )
 }
