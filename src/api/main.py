@@ -256,9 +256,11 @@ def get_courses(
         q    = "SELECT * FROM courses WHERE is_active = TRUE"
         p    = []
         if program:
-            q += " AND program_code = %s"; p.append(program)
+            q += " AND program_code = %s"
+        p.append(program)
         if course_type:
-            q += " AND course_type = %s"; p.append(course_type)
+            q += " AND course_type = %s"
+        p.append(course_type)
         q += " ORDER BY program_code, course_type, course_code"
         cur.execute(q, p)
         courses = [dict(r) for r in cur.fetchall()]
