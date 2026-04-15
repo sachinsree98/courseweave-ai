@@ -19,6 +19,7 @@
 .heroInner { max-width: 780px; margin: 0 auto; }
 .heroTag { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; color: var(--text-secondary); background: var(--bg-secondary); border: 1px solid var(--border); padding: 5px 14px; border-radius: 999px; margin-bottom: 32px; }
 .tagDot { width: 6px; height: 6px; border-radius: 50%; background: #C8102E; flex-shrink: 0; }
+.productName { font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--text-primary); letter-spacing: -1px; margin-bottom: 16px; }
 .heroTitle { font-size: clamp(36px, 5.5vw, 58px); font-weight: 300; line-height: 1.12; color: var(--text-primary); margin-bottom: 24px; letter-spacing: -1px; }
 .heroAccent { font-weight: 700; color: #C8102E; }
 .heroDesc { font-size: 17px; line-height: 1.75; color: var(--text-secondary); max-width: 640px; margin: 0 auto 36px; }

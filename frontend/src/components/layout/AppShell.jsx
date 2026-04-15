@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Outlet, NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 import {
-  LayoutDashboard, BookOpen, Map, GitBranch,
+  LayoutDashboard, BookOpen, Map,
   TrendingUp, LogOut, Bot, ChevronRight, Sun, Moon
 } from 'lucide-react'
 import styles from './AppShell.module.css'
@@ -12,7 +12,6 @@ const nav = [
   { to: '/advisor', icon: Bot, label: 'AI Advisor' },
   { to: '/catalog', icon: BookOpen, label: 'Course Catalog' },
   { to: '/roadmap', icon: Map, label: 'My Roadmap' },
-  { to: '/prerequisites', icon: GitBranch, label: 'Prerequisites' },
   { to: '/progress', icon: TrendingUp, label: 'Progress' },
 ]
 
