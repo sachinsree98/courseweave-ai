@@ -36,7 +36,7 @@ JWT_SECRET = os.getenv("JWT_SECRET", "courseweave-secret-key-change-in-prod")
 JWT_ALGORITHM = "HS256"
 JWT_EXPIRY_HOURS = 24
 
-security = HTTPBearer()
+security = HTTPBearer() 
 
 PROGRAMS = ["MS_DAE", "MS_DS", "MS_CS", "MS_DA", "MS_IS"]
 CAREERS = ["Data Engineer", "Data Scientist", "Data Analyst", "Business Analyst", "Software Engineer", "ML Engineer"]
@@ -806,6 +806,18 @@ def recommend(req: RecommendRequest, user=Depends(verify_token)):
                     course_codes
                 )
                 course_info = {row["course_code"]: {"credits": row["credits"], "course_type": row["course_type"]} for row in cur.fetchall()}
+
+                # Also check elective_courses for cross-dept courses not in courses table
+                missing_codes = [c for c in course_codes if c not in course_info]
+                if missing_codes:
+                    placeholders2 = ",".join(["%s"] * len(missing_codes))
+                    cur.execute(
+                        f"SELECT course_code, credits, 'Elective' as course_type FROM elective_courses WHERE course_code IN ({placeholders2})",
+                        missing_codes
+                    )
+                    for row in cur.fetchall():
+                        course_info[row["course_code"]] = {"credits": row["credits"], "course_type": row["course_type"]}
+                    logger.info("Enriched %d cross-dept courses from elective_courses", len(missing_codes))
 
                 for course in result["courses"]:
                     info = course_info.get(course["course_code"], {})
