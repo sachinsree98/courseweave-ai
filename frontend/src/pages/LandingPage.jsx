@@ -69,6 +69,7 @@ export default function LandingPage() {
             <span className={styles.tagDot} />
             Northeastern University · For Graduate Students
           </div>
+          <div className={styles.productName}>CourseWeave AI</div>
           <h1 className={styles.heroTitle}>
             Your academic path,<br />
             <span className={styles.heroAccent}>intelligently planned.</span>

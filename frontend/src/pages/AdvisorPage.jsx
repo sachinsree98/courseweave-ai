@@ -3,6 +3,7 @@ import { recommendApi, conversationsApi } from '../services/api'
 import { useAuth } from '../context/AuthContext'
 import { Badge } from '../components/ui'
 import { Send, Bot, User, Sparkles, Plus, Trash2 } from 'lucide-react'
+import ReactMarkdown from 'react-markdown'
 import styles from './AdvisorPage.module.css'
 
 const SUGGESTIONS = [
@@ -39,7 +40,9 @@ function Message({ msg, onSelectPath }) {
           <div className={styles.typingDots}><span /><span /><span /></div>
         ) : (
           <>
-            <p className={styles.bubbleText}>{msg.text}</p>
+            <div className={styles.bubbleText}>
+              <ReactMarkdown>{msg.text}</ReactMarkdown>
+            </div>
 
             {msg.action === 'ask_path' && onSelectPath && (
               <div className={styles.pathButtons}>

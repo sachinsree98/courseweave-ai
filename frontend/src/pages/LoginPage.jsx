@@ -53,9 +53,6 @@ export default function LoginPage() {
           Don't have an account? <Link to="/signup">Create one</Link>
         </p>
 
-        <div className={styles.demoHint}>
-          <strong>Demo:</strong> Use any email from Seed_data.pgsql with password <code>demo1234</code>
-        </div>
       </div>
     </div>
   )
